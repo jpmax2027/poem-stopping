@@ -25,3 +25,7 @@ MAKEFUN_OUTPUT_DIR=/tmp/poem-out python3 main.py
 A single UTF-8 text file, `entry.txt`, containing the poem (between 1
 and 280 characters). The poem text lives as a literal in `main.py`;
 the program is deterministic and uses only the Python standard library.
+Before writing, the poem is validated to be within the 1–280
+character window, and the file is written atomically (via a temporary
+file in the same directory plus `os.replace`), so a failed run never
+leaves a partial `entry.txt` behind.
